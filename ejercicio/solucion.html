@@ -5,24 +5,90 @@
             mermaid.initialize({ startOnLoad: true });
         </script>
 
-            
+        <center>
+        <h1>Univesidad Nacional de Loja</h1>
+        <h1>Maestria en Ingeniería de Software</h1>
+        <h1>Desarrollo de Software dirigido por modelos</h1></center>
 
-        <h5>Ejemplo 02</h5>
+        <h2>Autor: Byron Giovanny Cholca C. </h2>
+        <h3>MODELO PIM:</h3>
         <div class="mermaid">
           classDiagram
 
-            class BankAccount
-            BankAccount : +String id
-            BankAccount : +Bigdecimal balance
-            BankAccount : +deposit(amount)
-            BankAccount : +withdrawal(amount)
+          direction LR
 
-            class Persona
-            Persona : +String nombre
-            Persona : +int edad
+            class Equipo
+            Equipo : +nombre
+            Equipo : +tipo_deporte
+            Equipo : +siglas
+
+            class Jugador
+            Jugador : +nombre
+            Jugador : +apellido
+
+
+            class Sancion
+            Sancion : +observacion
+            Sancion : +multa
     
-            Persona "1" --> "*" BankAccount
+            Equipo "1" --> "0..*" Jugador
+
+            Jugador "1" --> "0..*" Sancion
 
         </div>
+
+        <h3>MODELO PSM:</h3>
+        <div class="mermaid">
+            classDiagram
+  
+              class Equipo
+              Equipo : +String nombre
+              Equipo : +String tipo_deporte
+              Equipo : +String siglas
+              Equipo : +setNombre(nombre String)
+              Equipo : +getNombre() String
+              Equipo : +setTipoDeporte(tipoDeporte String)
+              Equipo : +getTipoDeporte() String
+              Equipo : +setSiglas(siglas String)
+              Equipo : +getSiglas() String
+              Equipo : +getListaJugadores() List~Jugador~
+              Equipo : +setListaJugadores(List~Jugador~ jugadores) 
+              Equipo : +agregarEquipo(Equipo equipo)
+              Equipo : +modificarEquipo(Equipo equipo)
+              Equipo : +eliminarEquipo(int idEquipo)
+  
+              class Jugador
+              Jugador : +String nombre
+              Jugador : +String apellido
+              Jugador : +setNombre(nombre String)
+              Jugador : +getNombre() String
+              Jugador : +setApellido(apellido String)
+              Jugador : +getApellido() String
+              Jugador : +getListaSanciones() List~Sanciones~
+              Jugador : +setListaSanciones(List~Sanciones~ sanciones) 
+              Jugador : +agregarJugador(Jugador jugador)
+              Jugador : +modificarJugador(Jugador jugador)
+              Jugador : +eliminarJugador(int idJugador)
+  
+  
+              class Sancion
+              Sancion : +String observacion
+              Sancion : +String multa
+              Sancion : +setObservacion(observacion String)
+              Sancion : +getObservacion() String
+              Sancion : +setMulta(multa String)
+              Sancion : +getMulta() String
+              Sancion : +agregarSancion(Sancion sancion)
+              Sancion : +modificarSancion(Sancion sancion)
+              Sancion : +eliminarSancion(int idSacion)
+      
+
+              %% Relaciones
+              Equipo "1" -- "1..*" Jugador : tiene
+  
+              Jugador "1" -- "0..*" Sancion : tiene
+  
+          </div>
+
     </body>
 </html>
